@@ -10,9 +10,9 @@ mvnw
 ### Gradle ###
 !gradle/wrapper/gradle-wrapper.jar
 .gradle
-/build/
-/gradlew
-/gradlew.bat
+build/
+gradlew
+gradlew.bat
 
 ### MISC ###
 .DS_Store⏎
