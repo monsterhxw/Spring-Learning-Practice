@@ -8,9 +8,11 @@ mvnw.cmd
 mvnw
 
 ### Gradle ###
+!gradle/wrapper/gradle-wrapper.jar
 .gradle
 /build/
-!gradle/wrapper/gradle-wrapper.jar
+/gradlew
+/gradlew.bat
 
 ### MISC ###
 .DS_Store⏎
