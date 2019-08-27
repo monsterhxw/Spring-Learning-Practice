@@ -1,0 +1,22 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+# mybatis
+mybatis:
+  type-handlers-package: geektime.spring.mybatis.generator.handler
+  configuration:
+    map-underscore-to-camel-case: true
+
+# pagehelper
+pagehelper:
+  offset-as-page-num: true
+  reasonable: true
+  page-size-zero: true
+  support-methods-arguments: true

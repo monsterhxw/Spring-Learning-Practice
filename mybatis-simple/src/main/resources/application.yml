@@ -1,0 +1,13 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+mybatis:
+  type-handlers-package: geektime.spring.mybatis.handler
+  configuration:
+    map-underscore-to-camel-case: true

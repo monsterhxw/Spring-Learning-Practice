@@ -1,0 +1,15 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+mybatis:
+  type-handlers-package: geektime.spring.mybatis.generator.handler
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath*:/mapper/**/*.xml
+  type-aliases-package: geektime.spring.mybatis.generator.model
