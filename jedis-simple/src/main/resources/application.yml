@@ -1,0 +1,23 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: none
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+redis:
+  host: localhost
+  maxTotal: 5
+  maxIdle: 5
+  testOnBorrow: true

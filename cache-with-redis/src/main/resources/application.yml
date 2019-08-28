@@ -1,0 +1,25 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: none
+  cache:
+    type: redis
+    cache-names: coffee
+    redis:
+      time-to-live: 5000
+      cache-null-values: false
+  redis:
+    host: localhost
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
