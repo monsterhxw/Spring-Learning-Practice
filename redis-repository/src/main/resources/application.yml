@@ -1,0 +1,26 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+  # jpa
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: none
+  # redis
+  redis:
+    host: localhost
+    # lettuce
+    lettuce:
+      pool:
+        max-active: 5
+        max-idle: 5
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
