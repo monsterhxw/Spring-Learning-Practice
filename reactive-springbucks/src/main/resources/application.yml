@@ -1,0 +1,16 @@
+spring:
+  redis:
+    host: localhost
+    lettuce:
+      pool:
+        max-idle: 5
+        max-active: 5
+#  datasource:
+#    initialization-mode: always
+
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          r2dbc: debug

@@ -1,0 +1,22 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+  jpa:
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+    hibernate:
+      ddl-auto: none
+  datasource:
+    driver-class-name: com.p6spy.engine.spy.P6SpyDriver
+    url: jdbc:p6spy:h2:mem:testdb
+    username: sa
+    password:
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
