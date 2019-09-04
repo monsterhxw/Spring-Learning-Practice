@@ -1,0 +1,9 @@
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
