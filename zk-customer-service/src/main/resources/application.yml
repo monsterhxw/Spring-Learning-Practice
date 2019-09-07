@@ -1,0 +1,15 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+# zookeeper
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+server:
+  port: 0
