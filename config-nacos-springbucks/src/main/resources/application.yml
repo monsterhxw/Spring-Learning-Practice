@@ -1,0 +1,48 @@
+server:
+  port: 8080
+
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: none
+  output:
+    ansi:
+      enabled: always
+
+order:
+  discount: 95
+
+# resilience4j
+resilience4j:
+  ratelimiter:
+    limiters:
+      coffee:
+        limit-for-period: 5
+        limit-refresh-period-in-millis: 30000
+        timeout-in-millis: 5000
+        subscribe-for-events: true
+        register-health-indicator: true
+      order:
+        limit-for-period: 3
+        limit-refresh-period-in-millis: 30000
+        timeout-in-millis: 1000
+        subscribe-for-events: true
+        register-health-indicator: true
+
+info:
+  app:
+    author: DigitalSonic
+    encoding: @project.build.sourceEncoding@
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
