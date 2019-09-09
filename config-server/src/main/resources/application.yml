@@ -1,0 +1,18 @@
+server:
+  port: 8888
+
+management:
+  endpoint:
+    health:
+      show-details: ALWAYS
+spring:
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+    config:
+      server:
+        git:
+          uri: file:///Users/monstervivi/Downloads/Learning/geektime-spring-cloud-config-git-repo
