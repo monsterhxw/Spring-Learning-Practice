@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: springbucks-service
+  # zookeeper
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181
