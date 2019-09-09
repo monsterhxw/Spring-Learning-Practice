@@ -1,0 +1,29 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+  # consul
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+# feign
+feign:
+  client:
+    config:
+      default:
+        connect-timeout: 500
+        read-timeout: 500
+  # hystrix
+  hystrix:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+server:
+  port: 8090
