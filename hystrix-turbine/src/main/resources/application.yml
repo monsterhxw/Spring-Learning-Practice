@@ -1,0 +1,30 @@
+server:
+  port: 9000
+
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS
+  # consul
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+
+# turbine
+turbine:
+  aggregator:
+    cluster-config: customer-service
+  app-config: customer-service
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
