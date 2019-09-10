@@ -1,0 +1,39 @@
+server:
+  port: 0
+
+spring:
+  output:
+    ansi:
+      enabled: ALWAYS
+  datasource:
+    url: jdbc:mysql://localhost/springbucks
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        format_sql: true
+  cloud:
+    stream:
+      bindings:
+        newOrders:
+          group: barista-service
+      kafka:
+        binder:
+          brokers: localhost
+          defaultBrokerPort: 9092
+
+order:
+  barista-prefix: springbucks-
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: "*"

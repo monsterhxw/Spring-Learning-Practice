@@ -1,0 +1,65 @@
+server:
+  port: 8080
+
+spring:
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+    hibernate:
+      ddl-auto: none
+  output:
+    ansi:
+      enabled: always
+  # datasource
+  datasource:
+    # 运行过一次后，如果不想清空数据库就注释掉下面这行
+    initialization-mode: ALWAYS
+    url: jdbc:mysql://localhost/springbucks
+    username: root
+    password: root
+  cloud:
+    stream:
+      bindings:
+        finishedOrders:
+          group:
+            springbucks-service
+      kafka:
+        binder:
+          brokers: localhost
+          defaultBrokerPort: 9092
+
+order:
+  discount: 95
+
+# resilience4j
+resilience4j:
+  ratelimiter:
+    limiters:
+      coffee:
+        limit-for-period: 5
+        limit-refresh-period-in-millis: 30000
+        timeout-in-millis: 5000
+        subscribe-for-events: true
+        register-health-indicator: true
+      order:
+        limit-for-period: 3
+        limit-refresh-period-in-millis: 30000
+        timeout-in-millis: 1000
+        subscribe-for-events: true
+        register-health-indicator: true
+
+info:
+  app:
+    author: DigitalSonic
+    encoding: @project.build.sourceEncoding@
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
