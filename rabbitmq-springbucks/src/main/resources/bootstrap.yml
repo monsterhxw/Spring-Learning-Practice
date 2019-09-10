@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: springbucks-service
+  cloud:
+    # consul
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        prefer-ip-address: true
+      config:
+        enabled: true
+        format: yaml
