@@ -1,0 +1,81 @@
+server:
+  port: 8080
+
+spring:
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+        # 用来解决 LazyInitializationException: no Session
+        enable_lazy_load_no_trans: true
+    hibernate:
+      ddl-auto: none
+  output:
+    ansi:
+      enabled: always
+  # datasource
+  datasource:
+    # 运行过一次后，如果不想清空数据库就注释掉下面这行
+    initialization-mode: ALWAYS
+    url: jdbc:mysql://localhost/springbucks
+    username: root
+    password: root
+  # rabbitmq
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: spring
+    password: spring
+  cloud:
+    stream:
+      bindings:
+        finishedOrders:
+          group:
+            springbucks-service
+      rabbit:
+        bindings:
+          notifyOrders:
+            producer:
+              routing-key-expression: headers.customer
+  zipkin:
+    base-url: http://localhost:9411/
+    sender:
+      type: web
+  sleuth:
+    sampler:
+      probability: 1.0
+
+order:
+  discount: 95
+
+# resilience4j
+resilience4j:
+  ratelimiter:
+    limiters:
+      coffee:
+        limit-for-period: 5
+        limit-refresh-period-in-millis: 30000
+        timeout-in-millis: 5000
+        subscribe-for-events: true
+        register-health-indicator: true
+      order:
+        limit-for-period: 3
+        limit-refresh-period-in-millis: 30000
+        timeout-in-millis: 1000
+        subscribe-for-events: true
+        register-health-indicator: true
+
+info:
+  app:
+    author: DigitalSonic
+    encoding: @project.build.sourceEncoding@
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
